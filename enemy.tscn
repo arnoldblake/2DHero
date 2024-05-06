@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://df1k7ix473n6r"]
+
+[ext_resource type="Texture2D" uid="uid://7ilm6tj4nvmr" path="res://brackeys_platformer_assets/sprites/slime_green.png" id="1_murwn"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_nqew4"]
+[ext_resource type="PackedScene" uid="uid://b8m7p1bf0n76q" path="res://killzone.tscn" id="2_32udd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmnx6"]
+atlas = ExtResource("1_murwn")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppi2g"]
+atlas = ExtResource("1_murwn")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0nnn"]
+atlas = ExtResource("1_murwn")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh8j6"]
+atlas = ExtResource("1_murwn")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ax8vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmnx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppi2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0nnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh8j6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awe7b"]
+size = Vector2(8, 10)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_nqew4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ax8vc")
+autoplay = "default"
+frame_progress = 0.127251
+
+[node name="Killzone" parent="." instance=ExtResource("2_32udd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_awe7b")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(-2.13482e-10, 6)
+rotation = 0.00124784
+target_position = Vector2(9, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+target_position = Vector2(-9, 0)

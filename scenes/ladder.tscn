@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnxaonmnlhyl4"]
 
 [ext_resource type="Texture2D" uid="uid://1ajrnuhkj3l0" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="1_0wmwn"]
-[ext_resource type="Script" path="res://ladder.gd" id="1_3yol4"]
+[ext_resource type="Script" path="res://scripts/ladder.gd" id="1_3yol4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5mtl"]
 size = Vector2(12, 10)

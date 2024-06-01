@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="2DHero"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://scenes/default_bus_layout.tres"
+
 [autoload]
 
-Music="*res://music.tscn"
+Music="*res://scenes/music.tscn"
 
 [input]
 
@@ -41,6 +45,13 @@ move_up={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Ladder"
+2d_physics/layer_4="Enemy"
 
 [rendering]
 

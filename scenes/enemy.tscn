@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://df1k7ix473n6r"]
 
 [ext_resource type="Texture2D" uid="uid://7ilm6tj4nvmr" path="res://brackeys_platformer_assets/sprites/slime_green.png" id="1_murwn"]
-[ext_resource type="Script" path="res://enemy.gd" id="1_nqew4"]
-[ext_resource type="PackedScene" uid="uid://b8m7p1bf0n76q" path="res://killzone.tscn" id="2_32udd"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nqew4"]
+[ext_resource type="PackedScene" uid="uid://b8m7p1bf0n76q" path="res://scenes/killzone.tscn" id="2_32udd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmnx6"]
 atlas = ExtResource("1_murwn")
@@ -52,6 +52,7 @@ autoplay = "default"
 frame_progress = 0.127251
 
 [node name="Killzone" parent="." instance=ExtResource("2_32udd")]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 6)

@@ -5,15 +5,15 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
 
+var on_ladder := false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var is_on_ladder = false
-
-
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
+	
+	# Add the gravity if were not colliding with a ladder.
+	if not is_on_floor(): 
 		velocity.y += gravity * delta
 
 	# Handle jump.
@@ -25,10 +25,6 @@ func _physics_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction > 0: animated_sprite_2d.flip_h = false
 	elif direction < 0: animated_sprite_2d.flip_h = true
-	
-	# Handle up movement
-	if Input.is_action_just_pressed("move_up") and is_on_ladder:
-		velocity.y = JUMP_VELOCITY / 2
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -44,3 +40,11 @@ func _physics_process(delta):
 		else: animated_sprite_2d.play("fall")
 
 	move_and_slide()
+
+func _on_area_2d_body_entered(body):
+	on_ladder = true
+
+
+func _on_area_2d_body_exited(body:Node2D):
+	on_ladder = false
+
